@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+
+	<style>
+
+		html {
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+			font-size: 12px;
+		}
+
+		.container {
+			width: 400px;
+			margin: 2em auto;
+			text-align: center;
+		}
+
+		h1 {
+			margin: 1em auto;
+		}
+
+		a {
+			text-decoration: none;
+			color: pink;
+			font-weight: 700;
+		}
+
+		span.red {
+			color: red;
+			font-weight: 700;
+		}
+
+		span.blue {
+			color: blue;
+			font-weight: 700;
+		}
+
+		.button {
+			width: 90px;
+			height: 15px;
+			border-radius: 5px;
+			padding: 5px;
+			margin: 0 auto;
+
+			cursor: pointer;
+			text-align: center;
+
+			background-color: pink;
+			font-size: 13px;
+			color: #fff;
+		}
+
+		.tic-tac-toe {
+			width: 315px;
+			height: auto;
+			margin: 0 auto;
+
+		}
+
+		.tile {
+			height: 100px;
+			width: 100px;
+			display: inline-block;
+			cursor: pointer;
+
+			position: relative;
+			vertical-align: top;
+
+			padding: 15px;
+			margin-bottom: 5px;
+			box-sizing: border-box;
+
+			color: #fff;
+			font-size: 60px;
+			text-align: center;
+		}
+
+		.free {
+			background-color: #999;
+		}
+
+
+		.O-play {
+			background-color: blue;
+		}
+
+		.X-play {
+			background-color: red;
+		}
+
+
+		
+
+	</style>
+</head>
+<body>
+
+
+	<div class="container">
+
+		<h1>Tic Tac Toe</h1>
+
+		<p>A simple game of tic tac toe to play<br/>
+			You play as <span class="red">X</span> and the (dim-witted) computer plays as <span class="blue">O</span><br/>
+			Start by choosing a square to play</p>
+
+
+		<div class="button" id="reset-button">Reset Board</div>
+
+	</div>
+
+	<div class="tic-tac-toe">
+		<div id="square1" class="tile free"></div>
+		<div id="square2" class="tile free"></div>
+		<div id="square3" class="tile free"></div>
+		<div id="square4" class="tile free"></div>
+		<div id="square5" class="tile free"></div>
+		<div id="square6" class="tile free"></div>
+		<div id="square7" class="tile free"></div>
+		<div id="square8" class="tile free"></div>
+		<div id="square9" class="tile free"></div>
+	</div>
+
+	<footer class="container">Made by <a href="http://www.ireade.co.uk">Ire Ade</a><footer>
+
+
+</body>
+</html>
