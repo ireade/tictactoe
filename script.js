@@ -31,7 +31,12 @@ function clearBoard() {
 }
 
 function winAlert(player) {
-	alert(player+" wins!");
+
+	if (player == "X") {
+		alert("Congratulations, you beat the computer!")
+	} else {
+		alert("You lost!")
+	}
 	clearBoard();
 }
 
@@ -93,17 +98,14 @@ function checkWin() {
 
 
 
-
-
 function Oplay() {
 
-
+	// Function for when O plays tactically
 	function Oplaying(square) {
 
 		validatePlay(square)
 
 		if (playValid) {
-
 			square.removeClass('free');
 			square.addClass('played');
 			square.addClass('O-play');
@@ -114,6 +116,7 @@ function Oplay() {
 
 	}
 
+	// Function for when O plays randomly
 	function Orandomplay() {
 		for (var i = 0; i < 10; i++) {
 		// Loop to find a valid play
@@ -134,103 +137,113 @@ function Oplay() {
 	}
 
 
+	// Tactical Plays
+
+	win123_sq3 = ( sq1.hasClass('X-play') && sq2.hasClass('X-play') || sq1.hasClass('O-play') && sq2.hasClass('O-play') ) && !(sq3.hasClass('played'))
+	win123_sq2 = ( sq1.hasClass('X-play') && sq3.hasClass('X-play') || sq1.hasClass('O-play') && sq3.hasClass('O-play') ) && !(sq2.hasClass('played'))
+	win123_sq1 = ( sq3.hasClass('X-play') && sq2.hasClass('X-play') || sq3.hasClass('O-play') && sq2.hasClass('O-play') ) && !(sq1.hasClass('played'))
+
+	win456_sq6 = ( sq4.hasClass('X-play') && sq5.hasClass('X-play') || sq4.hasClass('O-play') && sq5.hasClass('O-play') ) && !(sq6.hasClass('played'))
+	win456_sq5 = ( sq4.hasClass('X-play') && sq6.hasClass('X-play') || sq4.hasClass('O-play') && sq6.hasClass('O-play') ) && !(sq5.hasClass('played'))
+	win456_sq4 = ( sq5.hasClass('X-play') && sq6.hasClass('X-play') || sq5.hasClass('O-play') && sq6.hasClass('O-play') ) && !(sq4.hasClass('played'))
+
+	win789_sq9 = ( sq7.hasClass('X-play') && sq8.hasClass('X-play') || sq7.hasClass('O-play') && sq8.hasClass('O-play') ) && !(sq9.hasClass('played'))
+	win789_sq8 = ( sq7.hasClass('X-play') && sq9.hasClass('X-play') || sq7.hasClass('O-play') && sq9.hasClass('O-play') ) && !(sq8.hasClass('played'))
+	win789_sq7 = ( sq8.hasClass('X-play') && sq9.hasClass('X-play') || sq8.hasClass('O-play') && sq9.hasClass('O-play') ) && !(sq7.hasClass('played'))
+
+	win147_sq7 = ( sq1.hasClass('X-play') && sq4.hasClass('X-play') || sq1.hasClass('O-play') && sq4.hasClass('O-play') ) && !(sq7.hasClass('played'))
+	win147_sq4 = ( sq1.hasClass('X-play') && sq7.hasClass('X-play') || sq1.hasClass('O-play') && sq7.hasClass('O-play') ) && !(sq4.hasClass('played'))
+	win147_sq1 = ( sq4.hasClass('X-play') && sq7.hasClass('X-play') || sq4.hasClass('O-play') && sq7.hasClass('O-play') ) && !(sq1.hasClass('played'))
+
+	win528_sq8 = ( sq5.hasClass('X-play') && sq2.hasClass('X-play') || sq5.hasClass('O-play') && sq2.hasClass('O-play') ) && !(sq8.hasClass('played'))
+	win528_sq2 = ( sq5.hasClass('X-play') && sq8.hasClass('X-play') || sq5.hasClass('O-play') && sq8.hasClass('O-play') ) && !(sq2.hasClass('played'))
+	win528_sq5 = ( sq2.hasClass('X-play') && sq8.hasClass('X-play') || sq2.hasClass('O-play') && sq8.hasClass('O-play') ) && !(sq5.hasClass('played'))
+
+	win693_sq3 = ( sq6.hasClass('X-play') && sq9.hasClass('X-play') || sq6.hasClass('O-play') && sq9.hasClass('O-play') ) && !(sq3.hasClass('played'))
+	win693_sq9 = ( sq6.hasClass('X-play') && sq3.hasClass('X-play') || sq6.hasClass('O-play') && sq3.hasClass('O-play') ) && !(sq9.hasClass('played'))
+	win693_sq6 = ( sq9.hasClass('X-play') && sq3.hasClass('X-play') || sq9.hasClass('O-play') && sq3.hasClass('O-play') ) && !(sq6.hasClass('played'))
+
+	win159_sq9 = ( sq1.hasClass('X-play') && sq5.hasClass('X-play') || sq1.hasClass('O-play') && sq5.hasClass('O-play') ) && !(sq9.hasClass('played'))
+	win159_sq5 = ( sq1.hasClass('X-play') && sq9.hasClass('X-play') || sq1.hasClass('O-play') && sq9.hasClass('O-play') ) && !(sq5.hasClass('played'))
+	win159_sq1 = ( sq5.hasClass('X-play') && sq9.hasClass('X-play') || sq5.hasClass('O-play') && sq9.hasClass('O-play') ) && !(sq1.hasClass('played'))
+
+	win573_sq3 = ( sq5.hasClass('X-play') && sq7.hasClass('X-play') || sq5.hasClass('O-play') && sq7.hasClass('O-play') ) && !(sq3.hasClass('played'))
+	win573_sq5 = ( sq5.hasClass('X-play') && sq3.hasClass('X-play') || sq5.hasClass('O-play') && sq3.hasClass('O-play') ) && !(sq5.hasClass('played'))
+	win573_sq7 = ( sq7.hasClass('X-play') && sq3.hasClass('X-play') || sq7.hasClass('O-play') && sq3.hasClass('O-play') ) && !(sq7.hasClass('played'))
+
+
+
 	// Win 1 2 3
-	if ( !(sq1.hasClass('played') && sq2.hasClass('played') && sq3.hasClass('played')) ) {
-
-		alert("Squares 1 + 2 +3 together have not been played yet")
-		if ( sq1.hasClass('X-play') && sq2.hasClass('X-play') || sq1.hasClass('O-play') && sq2.hasClass('O-play') ) {
-			Oplaying(sq3)
-			console.log("Win 123");
-		} else if ( sq1.hasClass('X-play') && sq3.hasClass('X-play') || sq1.hasClass('O-play') && sq3.hasClass('O-play') ) {
-			Oplaying(sq2)
-			console.log("Win 123");
-		} else if ( sq3.hasClass('X-play') && sq2.hasClass('X-play') || sq3.hasClass('O-play') && sq2.hasClass('O-play') ) {
-			Oplaying(sq1)
-			console.log("Win 123");
-		} 
-	}
-
-
+	if ( win123_sq3 ) {
+		Oplaying(sq3)
+	} else if ( win123_sq2 ) {
+		Oplaying(sq2)
+	} else if ( win123_sq1 )  {
+		Oplaying(sq1)
+	} 
 	
-
 	// Win 4 5 6
-	else if ( !(sq4.hasClass('played') && sq5.hasClass('played') && sq6.hasClass('played')) ) {
-		if ( sq4.hasClass('X-play') && sq5.hasClass('X-play') || sq4.hasClass('O-play') && sq5.hasClass('O-play') ) {
-			Oplaying(sq6)
-		} else if ( sq4.hasClass('X-play') && sq6.hasClass('X-play') || sq4.hasClass('O-play') && sq6.hasClass('O-play') ) {
-			Oplaying(sq5)
-		} else if ( sq5.hasClass('X-play') && sq6.hasClass('X-play') || sq5.hasClass('O-play') && sq6.hasClass('O-play') ) {
-			Oplaying(sq4)
-		} 
-	}
+	else if ( win456_sq6 ) {
+		Oplaying(sq6)
+	} else if ( win456_sq5 ) {
+		Oplaying(sq5)
+	} else if ( win456_sq4 ) {
+		Oplaying(sq4)
+	} 
 
 	// Win 7 8 9 
-	else if ( !(sq7.hasClass('played') && sq8.hasClass('played') && sq9.hasClass('played')) ) {
-		if ( sq7.hasClass('X-play') && sq8.hasClass('X-play') || sq7.hasClass('O-play') && sq8.hasClass('O-play') ) {
-			Oplaying(sq9)
-		} else if ( sq7.hasClass('X-play') && sq9.hasClass('X-play') || sq7.hasClass('O-play') && sq9.hasClass('O-play') ) {
-			Oplaying(sq8)
-		} else if ( sq8.hasClass('X-play') && sq9.hasClass('X-play') || sq8.hasClass('O-play') && sq9.hasClass('O-play') ) {
-			Oplaying(sq7)
-		}
+	else if ( win789_sq9 ) {
+		Oplaying(sq9)
+	} else if ( win789_sq8 ) {
+		Oplaying(sq8)
+	} else if ( win789_sq7 ) {
+		Oplaying(sq7)
 	}
 
 	// Win 1 4 7
-	else if ( !(sq1.hasClass('played') && sq4.hasClass('played') && sq7.hasClass('played')) ) {
-		if ( sq1.hasClass('X-play') && sq4.hasClass('X-play') || sq1.hasClass('O-play') && sq4.hasClass('O-play') ) {
-			Oplaying(sq7)
-		} else if ( sq1.hasClass('X-play') && sq7.hasClass('X-play') || sq1.hasClass('O-play') && sq7.hasClass('O-play') ) {
-			Oplaying(sq4)
-		} else if ( sq4.hasClass('X-play') && sq7.hasClass('X-play') || sq4.hasClass('O-play') && sq7.hasClass('O-play') ) {
-			Oplaying(sq1)
-		}
+	else if ( win147_sq7 ) {
+		Oplaying(sq7)
+	} else if ( win147_sq4 ) {
+		Oplaying(sq4)
+	} else if ( win147_sq1 ) {
+		Oplaying(sq1)
 	}
-
 
 	// Win 5 2 8
-	else if ( !(sq5.hasClass('played') && sq2.hasClass('played') && sq8.hasClass('played')) ) {
-		if ( sq5.hasClass('X-play') && sq2.hasClass('X-play') || sq5.hasClass('O-play') && sq2.hasClass('O-play') ) {
-			Oplaying(sq8)
-		} else if ( sq5.hasClass('X-play') && sq8.hasClass('X-play') || sq5.hasClass('O-play') && sq8.hasClass('O-play') ) {
-			Oplaying(sq2)
-		} else if ( sq2.hasClass('X-play') && sq8.hasClass('X-play') || sq2.hasClass('O-play') && sq8.hasClass('O-play') ) {
-			Oplaying(sq5)
-		} 
-	}
+	else if ( win528_sq8 ) {
+		Oplaying(sq8)
+	} else if ( win528_sq2 ) {
+		Oplaying(sq2)
+	} else if ( win528_sq5 ) {
+		Oplaying(sq5)
+	} 
 
 	// Win 6 9 3
-	else if ( !(sq6.hasClass('played') && sq9.hasClass('played') && sq3.hasClass('played')) ) {
-		if ( sq6.hasClass('X-play') && sq9.hasClass('X-play') || sq6.hasClass('O-play') && sq9.hasClass('O-play') ) {
-			Oplaying(sq3)
-		} else if ( sq6.hasClass('X-play') && sq3.hasClass('X-play') || sq6.hasClass('O-play') && sq3.hasClass('O-play') ) {
-			Oplaying(sq9)
-		} else if ( sq9.hasClass('X-play') && sq3.hasClass('X-play') || sq9.hasClass('O-play') && sq3.hasClass('O-play') ) {
-			Oplaying(sq6)
-		}
+	else if ( win693_sq3 ) {
+		Oplaying(sq3)
+	} else if ( win693_sq9 ) {
+		Oplaying(sq9)
+	} else if ( win693_sq6 ) {
+		Oplaying(sq6)
 	}
-
 
 	// Win 1 5 9
-	else if ( !(sq1.hasClass('played') && sq5.hasClass('played') && sq9.hasClass('played')) ) {
-		if ( sq1.hasClass('X-play') && sq5.hasClass('X-play') || sq1.hasClass('O-play') && sq5.hasClass('O-play') ) {
-			Oplaying(sq9)
-		} else if ( sq1.hasClass('X-play') && sq9.hasClass('X-play') || sq1.hasClass('O-play') && sq9.hasClass('O-play') ) {
-			Oplaying(sq5)
-		} else if ( sq5.hasClass('X-play') && sq9.hasClass('X-play') || sq5.hasClass('O-play') && sq9.hasClass('O-play') ) {
-			Oplaying(sq1)
-		} 
-	}
+	else if ( win159_sq9 ) {
+		Oplaying(sq9)
+	} else if ( win159_sq5 ) {
+		Oplaying(sq5)
+	} else if ( win159_sq1 ) {
+		Oplaying(sq1)
+	} 
 
 	// Win 5 7 3
-	else if ( !(sq5.hasClass('played') && sq7.hasClass('played') && sq3.hasClass('played')) ) {
-		if ( sq5.hasClass('X-play') && sq7.hasClass('X-play') || sq5.hasClass('O-play') && sq7.hasClass('O-play') ) {
-			Oplaying(sq3)
-		} else if ( sq5.hasClass('X-play') && sq3.hasClass('X-play') || sq5.hasClass('O-play') && sq3.hasClass('O-play') ) {
-			Oplaying(sq7)
-		} else if ( sq7.hasClass('X-play') && sq3.hasClass('X-play') || sq7.hasClass('O-play') && sq3.hasClass('O-play') ) {
-			Oplaying(sq5)
-		} 
-	}
+	else if ( win573_sq3 ) {
+		Oplaying(sq3)
+	} else if ( win573_sq7 ) {
+		Oplaying(sq7)
+	} else if ( win573_sq5 ) {
+		Oplaying(sq5)
+	} 
 
 
 	else {
