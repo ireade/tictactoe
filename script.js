@@ -11,6 +11,8 @@ var sq8 = $('#square8');
 var sq9 = $('#square9');
 
 var playValid = false;
+var win = false;
+
 
 
 function validatePlay(squareplayed) {
@@ -31,6 +33,7 @@ function clearBoard() {
 }
 
 function winAlert(player) {
+	win = true;
 
 	if (player == "X") {
 		alert("Congratulations, you beat the computer!")
@@ -89,9 +92,13 @@ function checkWin() {
 	} else if ( sq5.hasClass('O-play') && sq7.hasClass('O-play') && sq3.hasClass('O-play') ) {
 		winAlert("O");
 	}
+}
 
-	else {
-		console.log("No win yet")
+function checkDraw() {
+
+	if ( !($('.tile').hasClass('free')) ) {
+		alert("Draw! Try playing again!");
+		clearBoard();
 	}
 }
 
@@ -249,8 +256,11 @@ function Oplay() {
 	else {
 		Orandomplay();
 	}
+	checkDraw();
 	checkWin();
 }
+
+
 
 
 
@@ -264,6 +274,7 @@ $('.tile').on('click', function Xplay() {
 		$(this).addClass('X-play');
 		$(this).html("X");
 
+		checkDraw();
 		checkWin();
 		Oplay();
 
